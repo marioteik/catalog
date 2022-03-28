@@ -6,7 +6,9 @@ This is a small delivery system backend sample in c#.
 
  ```
   docker-compose up --build -d
- ```
+ ``` 
+ 
+ps: Postman collection to test the backend is on `e2e` folder for now.
 
 ## Roadmap
 
