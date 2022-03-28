@@ -1,0 +1,41 @@
+﻿version: '3.1'
+
+services:
+  catalogdb:
+    image: mongo
+  
+  redis:
+    image: redis:alpine
+
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: ./src/Services/Catalog.API/Dockerfile
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: ./src/Services/Basket.API/Dockerfile
+  
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
+    build:
+      context: .
+      dockerfile: ./src/ApiGateways/OcelotAPIGW/Dockerfile
+  
+  homepage.aggregator:
+    image: ${DOCKER_REGISTRY-}homepageaggregator
+    build:
+      context: .
+      dockerfile: ./src/ApiGateways/HomePage.Aggregator/Dockerfile
+  
+  identity.server:
+    image: ${DOCKER_REGISTRY-}identityserver
+    build:
+      context: .
+      dockerfile: ./src/SecurityLayer/IdentityServer/Dockerfile
+
+volumes:
+  mongo_data:

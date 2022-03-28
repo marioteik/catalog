@@ -1,0 +1,68 @@
+﻿version: '3'
+
+services:
+  catalogdb:
+    container_name: catalogdb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  
+  redis:
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  catalog.api:
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://root:root@catalogdb:27017"
+    depends_on:
+      - catalogdb
+    ports:
+      - "8001:80"
+
+  basket.api:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings:ConnectionString=redis:6379"
+    depends_on:
+      - redis
+    ports:
+      - "8002:80"
+  
+  ocelotapigw:
+    container_name: ocelotapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - homepage.aggregator
+    ports:
+      - "8000:80"
+  
+  homepage.aggregator:
+    container_name: homepage.aggregator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings:CatalogUrl=http://catalog.api"
+      - "ApiSettings:BasketUrl=http://basket.api"
+    depends_on:
+      - catalog.api
+      - basket.api
+    ports:
+      - "8050:80"
+  
+  identity.server:
+    container_name: identity.server
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8051:80"
+  
