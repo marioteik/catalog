@@ -1,6 +1,6 @@
 ﻿# Delivery application
 
-This is a small delivery system backend sample in c#.
+This is a small delivery system backend sample in c# (for now).
 
 ## Run the application
 
@@ -29,4 +29,9 @@ ps: Postman collection to test the backend is on `e2e` folder for now.
 - [ ] Create Payment microservice with PostgreSQL as database (Including PIX payment)
 - [ ] Create Delivery microservice with Redis as database
 - [ ] Create Chat with establishment microservice with MongoDB as database
+- [ ] Create Frontend application with React for the final user
+- [ ] Create Mobile application with React Native for the final user
+- [ ] Create a Electron application with React as frontend for the establishment 
+- [ ] Create mobile application with React Native for the establishment
+- [ ] Create a mobile application with Flutter for the courier (It's not supposed to be the best optimal project, it's to show some different skills)
 
