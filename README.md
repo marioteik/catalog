@@ -1,6 +1,6 @@
 ﻿# Delivery application
 
-This is a small delivery system backend sample in .NET core 6 (for now).
+This is a small delivery system backend sample in .NET Core 6 (for now).
 
 ## Run the application
 
