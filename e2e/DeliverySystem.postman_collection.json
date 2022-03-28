@@ -1,0 +1,217 @@
+{
+	"variables": [],
+	"info": {
+		"name": "DeliverySystem",
+		"_postman_id": "5179648a-f95d-9485-832e-db50c3f73b67",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Catalog",
+			"description": "",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"url": "http://localhost:8000/Catalog",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"url": "http://localhost:8000/Catalog",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Product 5\",\n    \"category\": \"Category 5\",\n    \"summary\": \"Product 5 summary\",\n    \"description\": \"Product 5 description\",\n    \"imageFile\": \"5.png\",\n    \"inStock\": true,\n    \"price\": 18\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"url": "http://localhost:8000/Catalog",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"60d8f8e0ad8e0a4c2aab8c21\",\n    \"name\": \"Product 22222223\",\n    \"category\": \"Category 2\",\n    \"summary\": \"Product 2 summary\",\n    \"description\": \"Product 2 description\",\n    \"imageFile\": \"2.png\",\n    \"inStock\": true,\n    \"price\": 11\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"url": "http://localhost:8000/Catalog/60d8f8e0ad8e0a4c2aab8c21",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"url": "http://localhost:8000/Catalog/60d8f8e0ad8e0a4c2aab8c21",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basket",
+			"description": "",
+			"item": [
+				{
+					"name": "Basket",
+					"request": {
+						"url": "http://localhost:8000/Basket",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"buyerId\": \"1234\",\n    \"items\": [\n    \t{\n    \t\t\"productId\": \"60d8f8e0ad8e0a4c2aab8c11\",\n    \t\t\"productName\": \"Product 1\",\n            \"unitPrice\": 10,\n\t\t\t\"quantity\": 20,\n    \t\t\"pictureUrl\": \"1.png\"\n    \t}\n    ],\n    \"establishmentId\": \"5432\",\n    \"totalPrice\": 0\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Basket",
+					"request": {
+						"url": "http://localhost:8000/Basket/1234",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Basket",
+					"request": {
+						"url": "http://localhost:8000/Basket/1234",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Homepage",
+			"description": "",
+			"item": [
+				{
+					"name": "HomePage",
+					"request": {
+						"url": "http://localhost:8000/HomePage/1234",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"url": "http://localhost:8051/connect/token",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "catalogApi",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "clientAccess",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "clientAccess",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "OpenId Configuration",
+					"request": {
+						"url": "http://localhost:8051/.well-known/openid-configuration",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
